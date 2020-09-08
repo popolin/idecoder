@@ -1,40 +1,75 @@
-# Idecoder
+# Idecoder gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/idecoder`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/idecoder.svg)](http://badge.fury.io/rb/idecoder)
 
-TODO: Delete this and the text above, and describe your gem
+Idecoder was created for developers building web applications with coding editors. Idecoder.js provides a plugin that gives the developer a screen inside their own app 
+to give the users a way to develop codes.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'idecoder'
-```
+    gem 'idecoder'
 
 And then execute:
 
-    $ bundle install
+    $ bundle
 
 Or install it yourself as:
 
     $ gem install idecoder
-
+    
 ## Usage
+Simply add the `render_idecoder` helper method to your Rails layout or to any specific page you wish.
 
-TODO: Write usage instructions here
+<pre>
+  &lt;html>
+  &lt;head>...&lt;/head>
+  &lt;body>
+    &lt;h1>My Content&lt;/h1>
+    ...
+    &lt;%= render_idecoder %>
+  &lt;/body>
+  &lt;/html>
+</pre>
 
-## Development
+To add options to the Idecoder plugin, simply pass them as a _Hash_ to the helper method:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+<pre>
+  # Switching to Haml
+  %html
+    %head
+      ... something ...
+    %body
+      %h1 Any content
+      ... something ...
+      
+      = render_idecoder {language: 'sql', read_only: 'false'}
+</pre>
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+If you wish to have Idecoder in your production and/or staging environment, pass the last argument of `false`:
+
+<pre>
+  = render_idecoder {language: 'ruby', read_only: 'false'}, <i style='color: #c00'>false</i>
+</pre>
+
+### Options
+
+| Value    | Default  | Description |
+|----------|----------|------------------------------------------|
+| language | ruby | select the language used in editor. See below for options |
+| read_only | true | Does not allow the user to make changes in databases |
+
+
+**Dependencies**
+
+Marx.Idecoder has a dependency on jQuery version >= 1.10.x
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/idecoder.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+1. Fork it ( https://github.com/popolin/idecoder/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

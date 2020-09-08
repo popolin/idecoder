@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{This creates code editor to use in your project.}
   spec.description   = %q{Now you can easily put an editor inside your project. With environment variables reader and autocompletes.}
-  spec.homepage      = "https://www.linkedin.com/in/popolin."
+  spec.homepage      = "https://www.linkedin.com/in/popolin"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 

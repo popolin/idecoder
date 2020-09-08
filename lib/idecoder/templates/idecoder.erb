@@ -1,4 +1,87 @@
+
+
+<% options_hash = eval(options) %>
+<% theme = options_hash[:theme].present? ? options_hash[:theme] : "monokai" %>
+<% mode = options_hash[:mode].present? ? options_hash[:mode] : "ruby" %>
+
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/ace/ace.js"></script>
+
+<script src="assets/ace/theme-<%= theme %>.js"></script>
+
+<script src="assets/ace/mode-ruby.js"></script>
+<script src="assets/jquery-ace.min.js"></script>
+
 <script src="assets/idecoder.js"></script>
+
 <script>
     var idecoder = new Idecoder(<%= options %>);
+
+    $(document).keydown(function(e) {
+
+        var key = undefined;
+        var possible = [ e.key, e.keyIdentifier, e.keyCode, e.which ];
+
+        while (key === undefined && possible.length > 0){
+            key = possible.pop();
+        }
+
+        if (key && key == '82'  && e.shiftKey && !(e.altKey)){
+            e.preventDefault();
+            return false;
+        }
+        return true;
+    });
+</script>
+
+<div class="idecoder-panel">
+    <a id="btn_copy" class='btn btn-sm btn-light border ace-clipboard' onclick='javascrit:copyToClipboard()'>Copy</a>
+    <div style="text-align: end">
+        <a id="btn_exec" title="Run (shift+r)" class='btn btn-sm btn-light border' style="width: 35px;" onclick='javascrit:runCode()'>
+            <i class="fa fa-play text-success"></i>
+        </a>
+    </div>
+    <pre id="editor-area" ></pre>
+</div>
+
+<div class="idecoder-result-panel" style="">
+    <pre id="editor-result-area" ></pre>
+</div>
+
+<script>
+    var config = idecoder.settings;
+    $canvas = $("#editor-area");
+    $canvas.css("border", config.border);
+    $canvas.css("height", config.height);
+    $canvas.css("width", config.width);
+    resultCanvas = $("#editor-result-area");
+    resultCanvas.css("height", 200);
+    resultCanvas.css("width", config.width);
+    resultCanvas.css("margin-top", config.height);
+
+    var resultEditor = ace.edit("editor-result-area");
+    resultEditor.setReadOnly(true);
+
+    var editor = ace.edit("editor-area");
+    editor.setTheme("ace/theme/<%= theme %>")
+    editor.session.setMode("ace/mode/<%= mode %>")
+
+    function copyToClipboard() {
+        var copyText = editor.getValue();
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(copyText).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+
+    function runCode(){
+
+    }
+
+    <% if options_hash[:copy].nil? || !options_hash[:copy] %>
+        $("#btn_copy").hide();
+    <% end %>
+
+
 </script>

@@ -57,13 +57,80 @@ If you wish to have Idecoder in your production and/or staging environment, pass
 
 | Value    | Default  | Description |
 |----------|----------|------------------------------------------|
-| language | ruby | select the language used in editor. See below for options |
+| language | ruby | See Language Options List |
+| theme | monokai | See Themes Options List |
+| height | 300px | Canvas height |
+| width | 90% | Canvas width |
+| border | '1px solid lightgray' | Border style |
 | read_only | true | Does not allow the user to make changes in databases |
 
+### Language Options
+
+| Value    | Description |
+|----------|------------------------------------------|
+| abap | ABAP Language |
+| asciidoc | AsciiDoc Language  |
+| c_cpp | C / C++  |
+| coldfusion | Cold Fusion  |
+| csharp | C Sharp  |
+| css | CSS  |
+| dart | Dart Language  |
+| dot | .Net  |
+| haml | HAML  |
+| java | Java Language  |
+| javascript | Javascript  |
+| json | Json  |
+| objectivec | Objective C  |
+| perl | Perl  |
+| pgsql | Language for PostgreSQL  |
+| php | PHP  |
+| python | Python Language  |
+| ruby | Ruby Language  |
+| sql | SQL Scripts  |
+| typescript | TypeScript  |
+| xml | XML  |
+| yaml | YAML  |
+
+
+### Theme Options
+
+| Value    | Description |
+|----------|------------------------------------------|
+| ambiance | Ambiance |
+| chaos | Chaos |
+| chrome | Chrome |
+| clouds | Clouds |
+| clouds_midnight | Clouds Midnight |
+| cobalt | Cobalt |
+| crimson_editor | Crimson Editor |
+| dawn | Dawn |
+| dreamweaver | Dreamweaver |
+| eclipse | Eclipse |
+| github | Github |
+| idle_fingers | Idle Fingers |
+| kr | KR |
+| merbivore | Merbivore |
+| merbivore_soft | Merbivore Soft |
+| mono_industrial | Mono Industrial |
+| monokai | Monokai |
+| pastel_on_dark | Pastel On Dark |
+| solarized_dark | Solarized Dark |
+| solarized_light | Solarized Dark |
+| textmate | TextMate |
+| tomorrow | Tomorrow |
+| tomorrow_night | Tomorrow Night |
+| tomorrow_night_blue | Tomorrow Night Blue |
+| tomorrow_night_bright | Tomorrow Night Bright |
+| tomorrow_night_eighties | Tomorrow Night Eighties |
+| twillight | Twillight |
+| vibrant_ink | Vibrant Ink |
+| xcode | XCode |
 
 **Dependencies**
 
-Marx.Idecoder has a dependency on jQuery version >= 1.10.x
+Marx.Idecoder has a dependency on:
+1. jQuery version >= 1.10.x
+2. JQuery Ace Rails  1.0.1
 
 
 ## Contributing

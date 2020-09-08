@@ -1,0 +1,10 @@
+.ace-clipboard{
+    font-size: 8px;
+    padding: 3px;
+    opacity: 0.8;
+    cursor: pointer;
+    position:relative;
+    top: 0px;
+    right: 0px;
+    z-index: 100;
+}

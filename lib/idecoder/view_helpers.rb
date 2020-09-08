@@ -11,5 +11,6 @@ module Idecoder
         raw ERB.new(template_file).result(binding)
       end
     end
+
   end
 end

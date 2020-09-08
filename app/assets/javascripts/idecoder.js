@@ -8,6 +8,9 @@ $.extend(Idecoder.prototype, {
     settings: {
         language: 'ruby',
         read_only: false,
+        height: "300px",
+        width: "90%",
+        border: "1px solid lightgray",
     },
     initialize: function(options) {
         $.extend(this.settings);
@@ -20,7 +23,7 @@ $.extend(Idecoder.prototype, {
 
     create_canvas: function() {
         var _this = this;
-        $('body').append("<div class=\"idecoder-js \">\n  <link rel=\"stylesheet\" href=\"/assets/stylesheets/idecoder.css\">\n</div>");
+        $('body').append("<div class=\"idecoder-js \">\n  <link rel=\"stylesheet\" href=\"/assets/idecoder.css\">\n</div>");
     },
     $: function(el) {
         return this.$el.find(el);

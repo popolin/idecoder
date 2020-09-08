@@ -1,0 +1,8 @@
+
+
+
+#Generate the build:
+gem build idecoder
+
+
+

@@ -1,4 +1,4 @@
-require_relative 'lib/idecoder/version'
+require_relative 'lib/idecoder/rails/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "idecoder"

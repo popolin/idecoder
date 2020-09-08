@@ -5,4 +5,5 @@
 gem build idecoder
 
 
-
+#Publish in rubygems
+gem push idecoder-0.1.0.gem

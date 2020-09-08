@@ -1,6 +1,6 @@
 require 'erb'
 
-module Marxjs
+module Idecoder
   module ViewHelpers
     include ActionView::Helpers::OutputSafetyHelper
 

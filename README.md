@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/idecoder.svg)](http://badge.fury.io/rb/idecoder)
 
-Idecoder was created for developers building web applications with coding editors. Idecoder.js provides a plugin that gives the developer a screen inside their own app 
+Idecoder was created for developers building web applications with coding editors. Idecoder provides a plugin that gives the developer a screen inside their own app 
 to give the users a way to develop codes.
 
 ## Installation
@@ -21,6 +21,9 @@ Or install it yourself as:
     
 ## Usage
 Simply add the `render_idecoder` helper method to your Rails layout or to any specific page you wish.
+after installing, go to "<host> / idecoder" for testing screen:
+
+![Alt text](app/assets/images/screen.png "Screen")
 
 <pre>
   &lt;html>
@@ -57,7 +60,7 @@ If you wish to have Idecoder in your production and/or staging environment, pass
 
 | Value    | Default  | Description |
 |----------|----------|------------------------------------------|
-| language | ruby | See Language Options List |
+| mode  | ruby | See Language Options List |
 | theme | monokai | See Themes Options List |
 | height | 300px | Canvas height |
 | width | 90% | Canvas width |
@@ -68,28 +71,9 @@ If you wish to have Idecoder in your production and/or staging environment, pass
 
 | Value    | Description |
 |----------|------------------------------------------|
-| abap | ABAP Language |
-| asciidoc | AsciiDoc Language  |
-| c_cpp | C / C++  |
-| coldfusion | Cold Fusion  |
-| csharp | C Sharp  |
-| css | CSS  |
-| dart | Dart Language  |
-| dot | .Net  |
-| haml | HAML  |
-| java | Java Language  |
+| html | Design Html  |
 | javascript | Javascript  |
-| json | Json  |
-| objectivec | Objective C  |
-| perl | Perl  |
-| pgsql | Language for PostgreSQL  |
-| php | PHP  |
-| python | Python Language  |
 | ruby | Ruby Language  |
-| sql | SQL Scripts  |
-| typescript | TypeScript  |
-| xml | XML  |
-| yaml | YAML  |
 
 
 ### Theme Options
@@ -128,9 +112,8 @@ If you wish to have Idecoder in your production and/or staging environment, pass
 
 **Dependencies**
 
-Marx.Idecoder has a dependency on:
-1. jQuery version >= 1.10.x
-2. JQuery Ace Rails  1.0.1
+Idecoder has a dependency on:
+1. gem execjs (sstephenson/execjs)
 
 
 ## Contributing

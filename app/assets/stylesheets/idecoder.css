@@ -1,10 +1,27 @@
-.ace-clipboard{
-    font-size: 8px;
+.idecoder-button{
+    font-size: 10px;
     padding: 3px;
     opacity: 0.8;
     cursor: pointer;
-    position:relative;
-    top: 0px;
-    right: 0px;
-    z-index: 100;
 }
+
+ .idecoder-pre {
+     font-size: 14px;
+     border: 2px solid grey;
+     width: 650px;
+     border-left: 12px solid darkslategray;
+     border-radius: 5px;
+     padding: 14px;
+
+     /* Fixed line height */
+     line-height: 20px;
+
+     /* Use linear-gradient for background image */
+     background-color: lightgray;
+
+     /* Size background so that the height is 2x line-height */
+     background-size: 100% 48px;
+
+     /* Offset the background along the y-axis by top padding */
+     background-position: 0 14px;
+ }

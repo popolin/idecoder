@@ -1,11 +1,11 @@
 window.Idecoder = function(options) {
     var _this = this;
-    this._url = "http://marxjs.com";
     return _this.initialize(options);
 };
 
 $.extend(Idecoder.prototype, {
     settings: {
+        theme: 'monokai',
         language: 'ruby',
         read_only: false,
         height: "300px",
@@ -13,7 +13,8 @@ $.extend(Idecoder.prototype, {
         border: "1px solid lightgray",
     },
     initialize: function(options) {
-        $.extend(this.settings);
+        let sett = this.settings
+        $.extend(jQuery.extend(sett, options));
         return this.create_canvas();
     },
     /*=========================

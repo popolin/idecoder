@@ -4,13 +4,13 @@
 <% theme = options_hash[:theme].present? ? options_hash[:theme] : "monokai" %>
 <% mode = options_hash[:mode].present? ? options_hash[:mode] : "ruby" %>
 
+<%= csrf_meta_tags %>
+
 <script src="assets/jquery/jquery.min.js"></script>
 <script src="assets/ace/ace.js"></script>
 
 <script src="assets/ace/theme-<%= theme %>.js"></script>
-
-<script src="assets/ace/mode-ruby.js"></script>
-<script src="assets/jquery-ace.min.js"></script>
+<script src="assets/ace/mode-<%= mode %>.js"></script>
 
 <script src="assets/idecoder.js"></script>
 
@@ -28,43 +28,56 @@
 
         if (key && key == '82'  && e.shiftKey && !(e.altKey)){
             e.preventDefault();
+            runCode();
             return false;
         }
         return true;
     });
 </script>
 
+
+<button id="idecoder_btn_copy" class='idecoder-button idecoder-copy border' onclick='javascrit:copyToClipboard()'>Copy source to clipboard
+</button>
+<button id="idecoder_btn_run" title="Run (shift+r)" class='idecoder-button idecoder-run' onclick='javascrit:runCode()'>
+    Run (shift+R)
+</button>
+
 <div class="idecoder-panel">
-    <a id="btn_copy" class='btn btn-sm btn-light border ace-clipboard' onclick='javascrit:copyToClipboard()'>Copy</a>
-    <div style="text-align: end">
-        <a id="btn_exec" title="Run (shift+r)" class='btn btn-sm btn-light border' style="width: 35px;" onclick='javascrit:runCode()'>
-            <i class="fa fa-play text-success"></i>
-        </a>
-    </div>
     <pre id="editor-area" ></pre>
 </div>
 
-<div class="idecoder-result-panel" style="">
-    <pre id="editor-result-area" ></pre>
+<br />
+
+<pre class="idecoder-pre" id="editor-result-area" ></pre>
+
+<div id="div_error" style="background-color: lightgray; padding: 10px; display: none">
+    <span id="error_message" style="color: red; font-size: 12px;"></span>
 </div>
 
+<input type="hidden" id="hide-editor-value">
+
 <script>
+
     var config = idecoder.settings;
+
     $canvas = $("#editor-area");
     $canvas.css("border", config.border);
     $canvas.css("height", config.height);
     $canvas.css("width", config.width);
     resultCanvas = $("#editor-result-area");
-    resultCanvas.css("height", 200);
-    resultCanvas.css("width", config.width);
     resultCanvas.css("margin-top", config.height);
-
-    var resultEditor = ace.edit("editor-result-area");
-    resultEditor.setReadOnly(true);
 
     var editor = ace.edit("editor-area");
     editor.setTheme("ace/theme/<%= theme %>")
     editor.session.setMode("ace/mode/<%= mode %>")
+    editor.setShowPrintMargin(false);
+    editor.setBehavioursEnabled(true);
+
+    var textvalue = $('#hide-editor-value');
+
+    editor.getSession().on('change', function() {
+        textvalue.val(editor.getValue());
+    });
 
     function copyToClipboard() {
         var copyText = editor.getValue();
@@ -76,7 +89,23 @@
     }
 
     function runCode(){
-
+        $.ajax({
+            url: '/idecoder/run',
+            type: 'POST',
+            data: {authenticity_token: $('[name="csrf-token"]')[0].content, mode: '<%= mode %>', code: textvalue.val()}
+        }).done(function(data) {
+            if(data.status == 200){
+                <% if mode == "html" %>
+                    $("#editor-result-area").html(data.data)
+                <% else %>
+                    $("#editor-result-area").text(data.data)
+                <% end %>
+                $("#div_error").hide();
+            } else {
+                $("#div_error").show();
+                $("#error_message").text(data.data)
+            }
+        });
     }
 
     <% if options_hash[:copy].nil? || !options_hash[:copy] %>

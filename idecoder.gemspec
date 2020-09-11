@@ -18,5 +18,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "rake"
+  spec.add_dependency "execjs"
   # spec.add_dependency "railties", "> 3.1"
 end

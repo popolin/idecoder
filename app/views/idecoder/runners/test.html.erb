@@ -1,0 +1,24 @@
+
+
+<small>Example:</small>
+<pre style="font-size: 10px; padding-bottom: 20px; padding-top: 20px; background-color: #eee !important; border: lightgray thin; ">
+	&lt;%= render_idecoder(theme: "vibrant_ink", mode: "<%= @mode %>" height: "100px", width: "90%", copy: false) %>
+</pre>
+
+
+Selected language:
+<%= select_tag "mode", options_for_select(@modes, @mode)  %>
+<br /><br />
+<hr>
+
+
+<div style="margin: 20px;">
+	<%= render_idecoder(theme: "vibrant_ink", mode: @mode, height: "100px", width: "90%", copy: false) %>
+</div>
+
+
+<script>
+	$("#mode").on("change", function () {
+		window.location = "/idecoder?mode="+$("#mode").val();
+    });
+</script>
